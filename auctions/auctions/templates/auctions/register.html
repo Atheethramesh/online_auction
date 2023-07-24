@@ -1,0 +1,64 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+<h2>Register</h2>
+
+{% if message %}
+<div class="h4 text-danger">{{ message }}</div>
+{% endif %}
+
+<form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+    {% comment %} 
+    <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="First name">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Last name">
+        </div>
+    </div> {% endcomment %}
+    <div class="row">
+        <div class="col-md-6 form-group ">
+            <input class="form-control" type="text" name="fname" placeholder="First Name" required>
+        </div>
+        <div class="col-md-6 form-group ">
+            <input class="form-control" type="text" name="lname" placeholder="Last Name" required>
+        </div>
+        <div class="col-md-6 form-group ">
+            <input class="form-control" type="text" name="username" placeholder="Username" required>
+        </div>
+        <div class="col-md-6 form-group">
+            <input class="form-control" type="email" name="email" placeholder="Email Address" required>
+        </div>
+        <div class="col-md-6 form-group">
+            <input class="form-control" type="password" name="password" placeholder="Password" required>
+        </div>
+        <div class="col-md-6 form-group">
+            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password" required>
+        </div>
+        <div class="col-md-6 form-group">
+            <input class="form-control" type="text" name="house" placeholder="House Name" required>
+        </div>
+        <div class="col-md-6 form-group">
+            <input class="form-control" type="text" name="street" placeholder="Street" required>
+        </div>
+        <div class="col-md-6 form-group">
+            <input class="form-control" type="text" name="city" placeholder="city" required>
+        </div>
+        <div class="col-md-6 form-group">
+            <input class="form-control" type="text" name="state" placeholder="State" required>
+        </div>
+        <div class="col-md-6 form-group">
+            <input class="form-control" type="text" name="phone" minlength="10" maxlength="10" pattern="[1-9][0-9]{9}"  placeholder="Enter a 10 digit phone number"  required>
+        </div>
+    </div>
+
+
+    <input class="btn btn-primary" type="submit" value="Register">
+</form>
+
+Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+
+{% endblock %}
